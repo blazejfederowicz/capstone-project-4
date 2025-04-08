@@ -11,6 +11,17 @@ app.get('/',(req,res)=>{
     res.render("index.ejs")
 })
 
+app.post('/',async (req,res)=>{
+    try{
+        const response = await axios.get("https://api.lyrics.ovh/v1/Coldplay/Adventure of a Lifetime") 
+        const result= response.data
+        console.log(result)
+        res.render("index.ejs")
+    } catch(error){
+        console.error(error)
+    }
+})
+
 app.listen(PORT,()=>{
     console.log(`Server running on port: ${PORT}`);
 })
