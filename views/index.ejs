@@ -5,9 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="styles.css" rel="stylesheet">
-    <title>Document</title>
+    <title>Lyrics finder</title>
 </head>
-<body class="bg-gray-300">
-    form
+<body class="bg-violet-500 min-h-lvh w-full container mx-auto">
+    <header class="mt-24 w-full pb-10">
+        <section class="">
+            <h1 class="text-white text-center text-4xl md:text-7xl font-bold">Search for the lyrics</h1>
+        </section>
+    </header>
+    <main class="w-full">
+        <section class="w-full flex justify-center items-center">
+            <form action="/" method="POST" class="text-white flex flex-col w-full max-w-96">
+                <label for="artist" class="block text-sm/6 font-medium text-white">Artist</label>
+                <input type="text" class="rounded-md bg-white outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-4 focus-within:-outline-offset-2 focus-within:outline-indigo-600 block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 sm:text-sm/6" id="artist" name="artist" placeholder="Coldplay" >
+                <label for="artist" class="block text-sm/6 font-medium text-white">Title</label>
+                <input type="text" class="rounded-md bg-white outline-1 -outline-offset-1 outline-gray-300 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-indigo-600 block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6" id="title" name="title" placeholder="Adventure of a Lifetime" >
+                <button class="mt-4 p-2 bg-gradient-to-r rounded-md font-bold cursor-pointer active:brightness-95 active:translate-y-1 duration-150 ease-in-out hover:brightness-95 from-lime-400 to-green-600">Search</button>
+            </form>
+        </section>
+        <section class=" mx-auto max-w-[40em] rounded-md mt-11 py-5 px-10 flex justify-start items-center bg-white">
+            <p class="shrink grow-0">
+                <%=locals.lyrics?lyrics:"We couldn't find the lyrics." %>
+            </p>
+        </section>
+    </main>
 </body>
 </html>

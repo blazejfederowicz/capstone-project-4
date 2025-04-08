@@ -12,11 +12,11 @@ app.get('/',(req,res)=>{
 })
 
 app.post('/',async (req,res)=>{
+    const {title, artist} = req.body
     try{
-        const response = await axios.get("https://api.lyrics.ovh/v1/Coldplay/Adventure of a Lifetime") 
+        const response = await axios.get(`https://api.lyrics.ovh/v1/${artist}/${title}`) 
         const result= response.data
-        console.log(result)
-        res.render("index.ejs")
+        res.render("index.ejs",{lyrics: result.lyrics})
     } catch(error){
         console.error(error)
     }
