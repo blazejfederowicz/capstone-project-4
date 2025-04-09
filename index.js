@@ -16,14 +16,54 @@ app.get('/',(req,res)=>{
 app.post('/',async (req,res)=>{
     const {title, artist} = req.body
     try{
-        const response = await Client.songs.search(`${title} ${artist}`);
+        const response = await Client.songs.search(`${title.trim()} ${artist.trim()}`);
+
+        if (!response || response.length === 0) {
+            return res.render("index.ejs", {
+                lyrics: "No matching song found.",
+                title: "",
+                url: ""
+            });
+        }
+
         const result= response[0] //.replace(/\r\n|\r/g, '\n').split('\n\n').join('<br>')
         const lyrics = await result.lyrics()
-        const firstVerse = lyrics.indexOf("[Verse 1]")
-        const slicedLyrics = lyrics.slice(firstVerse).split('\n').join('<br>')
-        res.render("index.ejs",{lyrics: slicedLyrics})
+
+        if(lyrics.trim().length>0){
+            const firstVerse = lyrics.indexOf("[Verse 1]")
+            const musicVideo = lyrics.indexOf("[Music Video]")
+
+            let slicedLyrics
+
+            if (firstVerse !== -1 && musicVideo !== -1 && firstVerse < musicVideo) {
+                slicedLyrics = lyrics.slice(firstVerse, musicVideo);
+            } else {
+                slicedLyrics = lyrics; // fallback to full lyrics
+            }
+
+            const formattedLyrics = slicedLyrics.trim().split('\n').join('<br>')
+            const fullTitle = result.fullTitle;
+            const url = result.url
+
+            res.render("index.ejs",{
+                lyrics: formattedLyrics,
+                title: fullTitle,
+                url:url
+            })
+        }else{
+            res.render("index.ejs",{
+                lyrics: "We couldn't find lyrics for this song.",
+                title: "",
+                url:""
+            })
+        }
+        
     } catch(error){
-        res.render("index.ejs",{error: "We couldn't find lyrics for this song."})
+        res.render("index.ejs",{
+            lyrics: "An error occurred while fetching lyrics.",
+            title: "",
+            url: ""
+        })
     }
 })
 

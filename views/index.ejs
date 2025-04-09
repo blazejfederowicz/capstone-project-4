@@ -23,10 +23,19 @@
                 <button class="mt-4 p-2 bg-gradient-to-r rounded-md font-bold cursor-pointer active:brightness-95 active:translate-y-1 duration-150 ease-in-out hover:brightness-95 from-lime-400 to-green-600">Search</button>
             </form>
         </section>
-        <section class=" mx-auto max-w-[40em] rounded-md mt-11 py-5 px-10 flex justify-start items-center bg-white">
-            <p class="shrink grow-0">
+        <section class=" mx-auto max-w-[40em] rounded-md mt-11 py-5 px-10 flex flex-col justify-center items-start bg-white">
+            <% if(locals.title){ %>
+            <h1 class="text-4xl md:text-6xl text-zinc-800 font-bold mb-2 ">
+                <%=title%>
+            </h1>
+            <% }%>
+            <% if(locals.url){ %>
+                <a href="<%=url%>" target="_blank" class=" text-zinc-500 mb-5 md:mb-10 cursor-pointer">
+                    <%=url%>
+                </a>
+            <% }%>
+            <p class="shrink grow-0 break-words">
                 <%-locals.lyrics && lyrics%>
-                <%=locals.error && error%>
             </p>
         </section>
     </main>
