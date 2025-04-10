@@ -30,16 +30,12 @@ app.post('/',async (req,res)=>{
         const lyrics = await result.lyrics()
 
         if(lyrics.trim().length>0){
-            const firstVerse = lyrics.indexOf("[Verse 1]")
+            const firstVerse = lyrics.indexOf("[")
             const musicVideo = lyrics.indexOf("[Music Video]")
 
-            let slicedLyrics
+            let slicedLyrics = lyrics.slice(firstVerse===-1?0:firstVerse, musicVideo===-1?lyrics.length-1:musicVideo);
 
-            if (firstVerse !== -1 && musicVideo !== -1 && firstVerse < musicVideo) {
-                slicedLyrics = lyrics.slice(firstVerse, musicVideo);
-            } else {
-                slicedLyrics = lyrics; // fallback to full lyrics
-            }
+            if(firstVerse===musicVideo) slicedLyrics = lyrics;
 
             const formattedLyrics = slicedLyrics.trim().split('\n').join('<br>')
             const fullTitle = result.fullTitle;

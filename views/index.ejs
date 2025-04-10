@@ -25,16 +25,16 @@
         </section>
         <section class=" mx-auto max-w-[40em] rounded-md mt-11 py-5 px-10 flex flex-col justify-center items-start bg-white">
             <% if(locals.title){ %>
-            <h1 class="text-4xl md:text-6xl text-zinc-800 font-bold mb-2 ">
+            <h1 class="text-4xl md:text-6xl text-zinc-800 font-bold mb-2 w-full">
                 <%=title%>
             </h1>
             <% }%>
             <% if(locals.url){ %>
-                <a href="<%=url%>" target="_blank" class=" text-zinc-500 mb-5 md:mb-10 cursor-pointer">
+                <a href="<%=url%>" target="_blank" class=" text-zinc-500 mb-5 md:mb-10 cursor-pointer w-full">
                     <%=url%>
                 </a>
             <% }%>
-            <p class="shrink grow-0 break-words">
+            <p class="break-words w-full">
                 <%-locals.lyrics && lyrics%>
             </p>
         </section>
