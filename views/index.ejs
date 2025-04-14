@@ -8,7 +8,8 @@
     <title>Lyrics finder</title>
 </head>
 <body class="bg-neutral-700 min-h-lvh w-full relative">
-    <div class="glow-effect"></div>
+    <div class="glow-effect rotate-[45deg] -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="glow-effect2 rotate-[45deg] -translate-x-1/2 -translate-y-1/2"></div>
     <div class="absolute inset-0 pointer-events-none custom-background"></div>   
     <header class="w-full px-5 py-10 border-b-2 border-cyan-400 z-10 relative">
         <section class="">
@@ -52,8 +53,11 @@
     <script>
         document.addEventListener('mousemove', (e) => {
         const glow = document.querySelector('.glow-effect');
+        const glowUp = document.querySelector('.glow-effect2')
         glow.style.left = `${e.clientX}px`;
         glow.style.top = `${e.clientY}px`;
+        glowUp.style.left = `${e.clientX}px`;
+        glowUp.style.top = `${e.clientY}px`;
         });
     </script>
 </body>
