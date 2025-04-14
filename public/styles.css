@@ -1,18 +1,22 @@
 .custom-background {
     background-color: transparent;
     background-image: 
-      linear-gradient(335deg, rgb(24, 24, 24) 55px, transparent 55px),
-      linear-gradient(155deg, rgb(24, 24, 24) 55px, transparent 55px),
-      linear-gradient(335deg, rgb(24, 24, 24) 55px, transparent 55px),
-      linear-gradient(155deg, rgb(24, 24, 24) 55px, transparent 55px);
-    background-size: 132px 122px;
-    background-position: 10px -2px, 11px 60px, 57px 59px, 58px -1px;
+      linear-gradient(335deg, rgb(24, 24, 24) 110px, transparent 110px),
+      linear-gradient(155deg, rgb(24, 24, 24) 110px, transparent 110px),
+      linear-gradient(335deg, rgb(24, 24, 24) 110px, transparent 110px),
+      linear-gradient(155deg, rgb(24, 24, 24) 110px, transparent 110px);
+    background-size: 262px 244px;
+    background-position: 
+      21px -3px, /*second bottom tingle*/
+      22px 120px,/*second top tingle*/
+      115px 119px,/*first bottom tingle*/
+      116px -2px;/*first top tingle*/
   }
 
 .glow-effect {
     position: absolute;
-    width: 120px;
-    height: 120px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     background: radial-gradient(
       circle, 
