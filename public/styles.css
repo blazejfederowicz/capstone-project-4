@@ -1,10 +1,14 @@
+:root{
+  --brick-color: rgb(10, 10, 10)
+}
+
 .custom-background {
     background-color: transparent;
     background-image: 
-      linear-gradient(335deg, rgb(24, 24, 24) 110px, transparent 110px),
-      linear-gradient(155deg, rgb(24, 24, 24) 110px, transparent 110px),
-      linear-gradient(335deg, rgb(24, 24, 24) 110px, transparent 110px),
-      linear-gradient(155deg, rgb(24, 24, 24) 110px, transparent 110px);
+      linear-gradient(335deg, var(--brick-color) 110px, transparent 110px),
+      linear-gradient(155deg, var(--brick-color) 110px, transparent 110px),
+      linear-gradient(335deg, var(--brick-color) 110px, transparent 110px),
+      linear-gradient(155deg, var(--brick-color) 110px, transparent 110px);
     background-size: 260px 244px;
     background-position: 
       21px -3px, /*second bottom tingle*/
@@ -15,10 +19,10 @@
 
 .glow-effect {
     position: absolute;
-    width: 200px;
-    height: 150px;
+    width: 300px;
+    height: 200px;
     border-radius: 50%;
-    background: radial-gradient(ellipse at center, rgba(100, 200, 255, 1) 0%, transparent 70%);
+    background: radial-gradient(ellipse at center, #22d3ee 0%, transparent 70%);
     pointer-events: none;
     mix-blend-mode: screen;
     background-repeat: no-repeat;
@@ -26,8 +30,8 @@
 
   .glow-effect2 {
     position: absolute;
-    width: 300px;
-    height: 200px;
+    width: 400px;
+    height: 300px;
     border-radius: 50%;
     background: radial-gradient(ellipse at center, rgba(100, 200, 255, 0.05) 0%, transparent 100%);
     filter: blur(50px);
@@ -35,3 +39,16 @@
     mix-blend-mode: screen;
     z-index: 11;
   }
+
+  
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.special-gothic {
+  font-family: "Special Gothic Condensed One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
