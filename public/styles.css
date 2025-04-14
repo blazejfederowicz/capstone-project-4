@@ -5,7 +5,7 @@
       linear-gradient(155deg, rgb(24, 24, 24) 110px, transparent 110px),
       linear-gradient(335deg, rgb(24, 24, 24) 110px, transparent 110px),
       linear-gradient(155deg, rgb(24, 24, 24) 110px, transparent 110px);
-    background-size: 262px 244px;
+    background-size: 260px 244px;
     background-position: 
       21px -3px, /*second bottom tingle*/
       22px 120px,/*second top tingle*/
@@ -16,11 +16,12 @@
 .glow-effect {
     position: absolute;
     width: 200px;
-    height: 200px;
+    height: 150px;
     border-radius: 50%;
     background: radial-gradient(ellipse at center, rgba(100, 200, 255, 1) 0%, transparent 70%);
     pointer-events: none;
     mix-blend-mode: screen;
+    background-repeat: no-repeat;
   }
 
   .glow-effect2 {
@@ -32,5 +33,5 @@
     filter: blur(50px);
     pointer-events: none;
     mix-blend-mode: screen;
-    z-index: 10;
+    z-index: 11;
   }
