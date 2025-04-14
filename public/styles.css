@@ -52,3 +52,8 @@
   font-weight: 400;
   font-style: normal;
 }
+
+.reveal{
+  opacity: 0;
+  transform: translateX(-2em);
+}

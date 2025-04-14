@@ -1,4 +1,4 @@
-import { animate, hover } from "https://cdn.jsdelivr.net/npm/motion@latest/+esm";
+import { animate, hover, inView } from "https://cdn.jsdelivr.net/npm/motion@latest/+esm";
 
 let windowX = window.scrollX
 let windowY = window.scrollY
@@ -7,6 +7,10 @@ const updateScrollState = () => {
     windowX = window.scrollX;
     windowY = window.scrollY;
 };
+
+inView(".reveal", (element) => {
+    animate(element, { opacity: 1, translateX: 0 })
+  })
 
 document.addEventListener('scroll', updateScrollState);
 

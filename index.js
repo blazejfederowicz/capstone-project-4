@@ -1,10 +1,12 @@
 import express from "express";
 import axios from "axios";
 import Genius from "genius-lyrics";
+import 'dotenv/config'
 
 const Client = new Genius.Client();
 const app = express()
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+const baseURL = process.env.BASE_URL || `http://localhost:${PORT}`
 
 app.use(express.static("public"))
 app.use(express.urlencoded({extended:true}))
