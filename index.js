@@ -45,7 +45,7 @@ app.post('/',async (req,res)=>{
             const formattedLyrics = slicedLyrics.trim().split('\n').join('<br>')
 
             res.render("index.ejs",{
-                lyrics: formattedLyrics,
+                lyrics: formattedLyrics.length>0?formattedLyrics:"We couldn't find lyrics for this song.",
                 title: fullTitle,
                 url:url
             })
