@@ -27,42 +27,35 @@ app.post('/',async (req,res)=>{
                 url: ""
             });
         }
-
-        const result= response[0] //.replace(/\r\n|\r/g, '\n').split('\n\n').join('<br>')
-        // const lyrics = await result.lyrics()
+        const findLyrics = await axios.get(`https://api.audd.io/findLyrics/`,{
+            params:{
+                q:`${title.trim()} ${artist.trim()}`,
+                api_token: process.env.AUDD_API_TOKEN
+            },
+            timeout: 5000
+        })
+        const lyrics = findLyrics.data.result
+        const result= response[0]
         const fullTitle = result.fullTitle;
         const url = result.url
 
-        res.render("index.ejs",{
-            lyrics: "",
-            title: fullTitle,
-            url:url
-        })
+        if(lyrics && lyrics.length>0){
+            let slicedLyrics = lyrics[0].lyrics;
 
-        // if(lyrics.trim().length>0){
-        //     const firstVerse = lyrics.indexOf("[")
-        //     const musicVideo = lyrics.indexOf("[Music Video]")
+            const formattedLyrics = slicedLyrics.trim().split('\n').join('<br>')
 
-        //     let slicedLyrics = lyrics.slice(firstVerse===-1?0:firstVerse, musicVideo===-1?lyrics.length-1:musicVideo);
-
-        //     if(firstVerse===musicVideo) slicedLyrics = lyrics;
-
-        //     const formattedLyrics = slicedLyrics.trim().split('\n').join('<br>')
-        //     const fullTitle = result.fullTitle;
-        //     const url = result.url
-
-        //     res.render("index.ejs",{
-        //         lyrics: formattedLyrics,
-        //         title: fullTitle,
-        //         url:url
-        //     })
-        // }else{
-        //     res.render("index.ejs",{
-        //         lyrics: "We couldn't find lyrics for this song.",
-        //         title: "",
-        //         url:""
-        //     })
-        // }
+            res.render("index.ejs",{
+                lyrics: formattedLyrics,
+                title: fullTitle,
+                url:url
+            })
+        }else{
+            res.render("index.ejs",{
+                lyrics: "We couldn't find lyrics for this song.",
+                title: fullTitle,
+                url:url
+            })
+        }
         
     } catch(error){
         console.error(error)
