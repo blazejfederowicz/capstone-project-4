@@ -36,7 +36,7 @@ app.post('/',async (req,res)=>{
         })
         const lyrics = findLyrics.data.result
         const result= response[0]
-        const fullTitle = result.fullTitle;
+        const fullTitle = result.fullTitle.replace(/\u00A0/g, ' ');;
         const url = result.url
 
         if(lyrics && lyrics.length>0){
