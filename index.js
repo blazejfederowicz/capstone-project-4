@@ -3,7 +3,7 @@ import axios from "axios";
 import Genius from "genius-lyrics";
 import 'dotenv/config'
 
-const Client = new Genius.Client();
+const Client = new Genius.Client(process.env.GENIUS_API_TOKEN);
 const app = express()
 const PORT = process.env.PORT || 3000;
 const baseURL = process.env.BASE_URL || `http://localhost:${PORT}`
@@ -58,7 +58,7 @@ app.post('/',async (req,res)=>{
         
     } catch(error){
         console.error(error)
-        res.status(500).render("index.ejs",{
+        res.render("index.ejs",{
             lyrics: "An error occurred while fetching lyrics.",
             title: "",
             url: ""
