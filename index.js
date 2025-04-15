@@ -58,7 +58,7 @@ app.post('/',async (req,res)=>{
         
     } catch(error){
         console.error(error)
-        res.sendStatus(500).render("index.ejs",{
+        res.status(500).render("index.ejs",{
             lyrics: "An error occurred while fetching lyrics.",
             title: "",
             url: ""
